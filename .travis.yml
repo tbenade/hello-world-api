@@ -10,4 +10,4 @@ before_install:
   - docker ps -a
 
 script:
-  - build.sh $TRAVIS_BUILD_NUMBER
+  - ./build.sh $TRAVIS_BUILD_NUMBER
