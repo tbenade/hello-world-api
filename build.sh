@@ -26,5 +26,6 @@ if [ -z "$BUILD_NUMBER" ]; then usage; fi
 echo "Building $RepositoryName:$BUILD_NUMBER"
 docker build -t "$RepositoryName:$BUILD_NUMBER" \
               -t "$RepositoryName:latest" .
+docker push $RepositoryName
 
 trap : 0
