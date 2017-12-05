@@ -1,0 +1,13 @@
+sudo: required
+
+language: node_js
+
+services:
+  - docker
+
+before_install:
+  - docker pull node:9.2.0-alpine
+  - docker ps -a
+
+script:
+  - build.sh $TRAVIS_BUILD_NUMBER
