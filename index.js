@@ -1,21 +1,25 @@
-const express = require('express')
-const app = express()
-
+const http = require('http')
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
-  console.log(req)
-  res.writeHead(200, { 'Content-Type': 'application/json' })
-  const response = {
+const requestHandler = (request, response) => {
+  console.log(request)
+  const data = {
     message: 'Hello world!',
-    headers: req.headers,
-    method: req.method,
-    hostname: req.hostname,
-    ip: req.ip,
-    originalUrl: req.originalUrl
+    headers: request.headers,
+    method: request.method,
+    hostname: request.hostname,
+    ip: request.connection.remoteAddress,
+    url: request.url,
+    port: request.port
   }
-  res.write(JSON.stringify(response, true, 2))
-  res.end()
-})
+  response.end(JSON.stringify(data, null, 2))
+}
 
-app.listen(port, () => console.log(`Hello-world api listening on port ${port}!`))
+const server = http.createServer(requestHandler)
+
+server.listen(port, (err) => {
+  if (err) {
+    return console.log(err)
+  }
+  console.log(`server is listening on ${port}`)
+})

@@ -17,9 +17,7 @@
     "url": "https://github.com/tbenade/hello-world-api/issues"
   },
   "homepage": "https://github.com/tbenade/hello-world-api#readme",
-  "dependencies": {
-    "express": "^4.16.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "nodemon": "^1.12.5"
   }
